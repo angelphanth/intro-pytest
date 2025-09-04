@@ -2,7 +2,7 @@
 [project]
 authors = [{ name = "First Last", email = "first.last@gmail.com" }]
 description = "A small example package"
-name = "python_package"
+name = "intro_pytest"
 # This means: Load the version from the package itself.
 # See the section below: [tools.setuptools.dynamic]
 dynamic = [
@@ -18,7 +18,7 @@ classifiers = [
 ]
 license = "MIT" # https://choosealicense.com/
 # # add dependencies here: (use one of the two)
-# dependencies = ["numpy", "pandas", "scipy", "matplotlib", "seaborn"]
+dependencies = ["numpy", "pandas", "scipy", "matplotlib", "seaborn"]
 # use requirements.txt instead of pyproject.toml for dependencies
 # https://stackoverflow.com/a/73600610/9684872
 # ! uncomment also dependencies in the dynamic section above
@@ -27,8 +27,8 @@ license = "MIT" # https://choosealicense.com/
 
 
 [project.urls]
-"Bug Tracker" = "https://github.com/RasmussenLab/python_package/issues"
-"Homepage" = "https://github.com/RasmussenLab/python_package"
+"Bug Tracker" = "https://github.com/angelphanth/intro_pytest/issues"
+"Homepage" = "https://github.com/angelphanth/intro_pytest"
 
 [project.optional-dependencies]
 # Optional dependencies to locally build the documentation, also used for 

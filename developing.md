@@ -5,7 +5,7 @@
 [packaging.python.org](https://packaging.python.org/en/latest/tutorials/packaging-projects/) 
 has an excellent tutorial on how to package a Python project. I read and used insights from
 that website to help create the template which is available on GitHub at
-[https://github.com/RasmussenLab/python_package](https://github.com/RasmussenLab/python_package)
+[https://github.com/RasmussenLab/intro_pytest](https://github.com/RasmussenLab/intro_pytest)
 and I want to give here an overview specifically to some details regarding this template.
 Some are overlapping with the 
 [packaging.python.org](https://packaging.python.org/en/latest/tutorials/packaging-projects/)
@@ -25,7 +25,7 @@ First an overview of the main folder structure. See line comments for details on
 is the purpose of each folder or file:
 
 ```bash
-python_package
+intro_pytest
 ├── docs # Documentation using Sphinx
 ├── src # the source code of the package
 ├── tests # pytest tests
@@ -45,7 +45,7 @@ We will first look at [`pyproject.toml`](pyproject.toml) and its relation to the
 [`pyproject.toml`](pyproject.toml) file is the main configuration file for the Python package
 and is used to specify the package metadata, dependencies, build tools and configurations.
 The [`src`](src) folder stores the actual source code of the package, where the package itself is
-the subdirectories of the [`src`](src) directory. The  (e.g. `src/python_package`).
+the subdirectories of the [`src`](src) directory. The  (e.g. `src/intro_pytest`).
 
 <details>
 <summary>About <code>setup.py</code> and <code>setup.cfg</code> configuration files</summary>
@@ -86,7 +86,7 @@ authors = [
   { name = "First Last", email = "first.last@gmail.com" },
 ]
 description = "A small example package"
-name = "python_package"
+name = "intro_pytest"
 # This means: Load the version from the package itself.
 # See the section below: [tools.setuptools.dynamic]
 dynamic = ["version", # version is loaded from the package
@@ -122,7 +122,7 @@ versioning through releases on GitHub. It also
 ensures that each commit has a unique version number, which is useful for attributing
 errors to specific non-released versions. The dynamic version is picked up in the 
 `__version__` variable in the `__init__.py` file of the package, which is located in the
-[`src/python_package`](src/python_package) directory.
+[`src/intro_pytest`](src/intro_pytest) directory.
 
 ```toml
 [build-system]
@@ -138,8 +138,8 @@ Please also update the project URL to your project:
 
 ```toml
 [project.urls]
-"Bug Tracker" = "https://github.com/RasmussenLab/python_package/issues"
-"Homepage" = "https://github.com/RasmussenLab/python_package"
+"Bug Tracker" = "https://github.com/RasmussenLab/intro_pytest/issues"
+"Homepage" = "https://github.com/RasmussenLab/intro_pytest"
 ```
 
 ## Source directory layout of the package
@@ -149,17 +149,17 @@ independent folder to look for the source code recognized by most tools you woul
 to build a package 
 (read on [packagin namespace packages](https://packaging.python.org/en/latest/guides/packaging-namespace-packages/)). 
 It also allows to have multiple subpackages or modules 
-in the same project under the `python_package` package (see example 
+in the same project under the `intro_pytest` package (see example 
 [here](https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#src-layout)).
 
 ```bash
 ├── src
-│   └── python_package
-│       ├── __init__.py # imported when the package is imported (import python_package)
-│       └── mockup.py # a submodule of the package (import python_package.mockup)
+│   └── intro_pytest
+│       ├── __init__.py # imported when the package is imported (import intro_pytest)
+│       └── mockup.py # a submodule of the package (import intro_pytest.mockup)
 ```
 
-So you will need to rename the `python_package` directory to your package name, 
+So you will need to rename the `intro_pytest` directory to your package name, 
 e.g. `my_package` and specify the package name in the [`pyproject.toml`](pyproject.toml) file 
 under the `[project]` section:
 
@@ -220,17 +220,17 @@ The required changes in [`conf.py`](docs/conf.py) are at the following places:
 ```python
 # in docs/conf.py
 
-project = "python_package"
+project = "intro_pytest"
 copyright = "2025, First Last"
 author = "First Last"
-PACKAGE_VERSION = metadata.version("python_package")
+PACKAGE_VERSION = metadata.version("intro_pytest")
 
 # ...
 
 # and again links to your project repository
 html_theme_options = {
-    "github_url": "https://github.com/RasmussenLab/python_package",
-    "repository_url": "https://github.com/RasmussenLab/python_package",
+    "github_url": "https://github.com/RasmussenLab/intro_pytest",
+    "repository_url": "https://github.com/RasmussenLab/intro_pytest",
     # more...
 }
 
@@ -241,7 +241,7 @@ if os.environ.get("READTHEDOCS") == "True":
     from pathlib import Path
 
     PROJECT_ROOT = Path(__file__).parent.parent
-    PACKAGE_ROOT = PROJECT_ROOT / "src" / "python_package"
+    PACKAGE_ROOT = PROJECT_ROOT / "src" / "intro_pytest"
 ```
 
 The last block is for Read The Docs to be able to generate the API documentation of your
@@ -293,12 +293,12 @@ In short, you can run the following commands in the [`docs`](docs ) directory:
 # in root of the project
 pip install ".[docs]"
 cd docs # change to docs directory
-sphinx-apidoc --force --implicit-namespaces --module-first -o reference ../src/python_package
+sphinx-apidoc --force --implicit-namespaces --module-first -o reference ../src/intro_pytest
 sphinx-build -n -W --keep-going -b html ./ ./_build/
 ```
 
 this will create a `reference` directory with the API documentation of the Python package
-`python_package`, a `jupyter_execute` for the tutorial in [`docs/tutorial`](docs/tutorial)
+`intro_pytest`, a `jupyter_execute` for the tutorial in [`docs/tutorial`](docs/tutorial)
  and a `_build` directory with an HTML version of the documentation. You can open the
 `_build/index.html` file in your browser to view the documentation built locally.
 
@@ -535,7 +535,7 @@ you can, e.g. by not pulling the repository using `actions/checkout@v4`.
 ## Full project structure
 
 ```bash
-python_package
+intro_pytest
 ├── docs
 │   ├── tutorial
 │   │   ├── tutorial.ipynb # tutorial in Jupyter Notebook format
@@ -545,9 +545,9 @@ python_package
 │   ├── Makefile # can be ignored
 │   └── README.md # specifies how to build the documentation
 ├── src
-│   └── python_package
-│       ├── __init__.py # imported when the package is imported (import python_package)
-│       └── mockup.py # a submodule of the package (import python_package.mockup)
+│   └── intro_pytest
+│       ├── __init__.py # imported when the package is imported (import intro_pytest)
+│       └── mockup.py # a submodule of the package (import intro_pytest.mockup)
 ├── tests
 │   ├── __init__.py
 │   └── test_mockup.py # files and test_function need to start with test_ to be recognized by pytest

@@ -10,8 +10,8 @@ see [GitHub documentation](https://docs.github.com/en/repositories/creating-and-
 
 You will need to find and replace occurences of
 
-- `python_package` -> `your_package_name`
-  - also the folder `src/python_package`
+- `intro_pytest` -> `your_package_name`
+  - also the folder `src/intro_pytest`
 - `RasmussenLab` -> `GitHub_user_name` (or `organization`)
   with the name of your package and GitHub user name (or organization).
 
@@ -34,8 +34,8 @@ pip install -e ".[dev]"
 > works using this template
 
 ```python
-from python_package import hello_world
-print (python_package.__version__)
+from intro_pytest import hello_world
+print (intro_pytest.__version__)
 print(hello_world(4))
 ```
 

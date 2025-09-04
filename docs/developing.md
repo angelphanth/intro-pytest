@@ -1,5 +1,5 @@
 ```{include} ../developing.md
 :start-line: 0
-:relative-docs: www.rasmussenlab.com/python_package/docs
+:relative-docs: www.rasmussenlab.com/intro_pytest/docs
 :relative-images:
 ```
