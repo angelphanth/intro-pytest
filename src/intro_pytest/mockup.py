@@ -13,8 +13,14 @@ def hello_world(n: int) -> str:
     -------
     str
         str of 'hello world' n-times
+    
+    Examples
+    --------
+    >>> hello_world(3)
+    'hello world hello world hello world'
     """
     return " ".join(repeat("hello world", n))
+
 
 
 def saved_world(filename: str) -> int:
@@ -30,6 +36,10 @@ def saved_world(filename: str) -> int:
     -------
     int
         How many times 'hello world' is in the file
+
+    Examples
+    --------
+    >>> saved_world("not-real.txt") # doctest: +SKIP
     """
     with open(filename, "r") as f:
         content = f.read()

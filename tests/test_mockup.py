@@ -8,3 +8,20 @@ def test_hello_world_3times():
     result = hello_world(3)
     assert result == expected
 
+@pytest.mark.xfail(raises=TypeError)
+def test_hello_world_str():
+    hello_world("3")
+
+@pytest.fixture
+def temp_file():
+    # set up
+    filename = "temp_hellooo.txt"
+    with open(filename, "w") as f:
+        f.write("hello world hello world hello world")
+    yield filename
+    # clean up
+    os.remove(filename)
+
+def test_saved_world_3times(temp_file):
+    result = saved_world(temp_file)
+    assert result == 3
